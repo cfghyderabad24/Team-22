@@ -33,9 +33,9 @@ function App() {
               </div>
             </>
           } />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Sign_in />} />
-          <Route path="studentregister" element={<StudentRegister />} />
+          {/* <Route path="login" element={<Login/>} /> */}
+          {/* <Route path="register" element={<Sign_in />} /> */}
+          {/* <Route path="studentregister" element={<StudentRegister />} /> */}
         </Routes>
       </BrowserRouter>
     </>
