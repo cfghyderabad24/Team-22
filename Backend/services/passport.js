@@ -1,5 +1,5 @@
 import {Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import {Google} from '../models/User.js';
+import {Google} from '../models/google.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
