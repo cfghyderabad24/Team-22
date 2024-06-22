@@ -6,3 +6,6 @@ const questionSchema = new mongoose.Schema({
     correct: Number
 });
 
+const question = mongoose.model('Question',questionSchema);
+
+export default question;
