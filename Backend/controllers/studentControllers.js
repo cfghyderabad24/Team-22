@@ -18,10 +18,10 @@ export const createStudent = asyncHandler( async (req,res)=>{
 export const getallStudents = asyncHandler(async (req,res)=>{
     try {
         const getStudents = await student.find()
-        res.json(getStudents)
+        res.json({getStudents:getStudents,status:201})
         
     } catch (error) {
-     throw new Error(error)   
+     res.json({error:error,status:404}) 
     }
 
 })
@@ -35,11 +35,26 @@ export const getaStudent = asyncHandler(async(req,res)=>{
         const {id} = req.user;
 
         const getStudent =await student.findById(id)
-        res.json(getStudent)
+        res.json({getStudent:getStudent,status:201})
     } catch (error) {
-        throw new Error(error)
+        res.json({error:error,status:404})
     }
 })
 
+// delete a student 
+
+export const deleteStudent = asyncHandler(async (req,res)=>{
+    try {
+        const {id} = req.params
+        const deletestudent = await student.findByIdAndDelete(id)
+            res.json({
+               deletestudent: deletestudent,
+               status:201
+            })
+
+    } catch (error) {
+        res.json({error:error,status:404})
+    }
+})
 
 
