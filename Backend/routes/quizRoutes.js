@@ -4,7 +4,7 @@ import { createQuestions, getQuestions, userQuestions } from '../controllers/qui
 const router = express.Router();
 
 router.route('/create').post(createQuestions);
-router.route('/questions').get(getQuestions);
+router.route('/questions/:bookName').get(getQuestions);
 router.route('/submitquiz').post(userQuestions);
 
 export default router;
