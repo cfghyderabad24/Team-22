@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt'
+import crypto from 'crypto'
 
 const teacherSchema = new mongoose.Schema({
     tid:{
