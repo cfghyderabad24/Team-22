@@ -1,4 +1,5 @@
 import admin from '../models/admin.js';
+import contact from '../models/contactTeacher.js';
 import asyncHandler from 'express-async-handler';
 
 // Admin Creation
@@ -69,3 +70,14 @@ export const triggerblockadmin = asyncHandler(async(req,res)=>{
         res.json({status:404,error:error})
     }
 })
+
+// Get Contact us Table 
+export const getallIssues = asyncHandler(async (request,response)=>{
+    try {
+        const getIssues = await contact.find().sort({ date: -1 });
+        response.status(210).json(getIssues)
+        
+    } catch (error) {
+     response.status(404).json({message:"No Issues"}) 
+    }
+});
