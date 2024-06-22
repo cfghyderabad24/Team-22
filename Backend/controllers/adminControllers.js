@@ -14,11 +14,11 @@ export const createAdmin = asyncHandler(async (request,response) => {
     }
 });
 
-// Students Table Dashboard
-export const getallStudents = asyncHandler(async (req,res)=>{
+// admin get all admins
+export const getallAdmins = asyncHandler(async (req,res)=>{
     try {
-        const getStudents = await student.find()
-        res.json({getStudents:getStudents,status:201})
+        const getAdmins = await admin.find()
+        res.json({getAdmins:getAdmins,status:201})
         
     } catch (error) {
      res.json({error:error,status:404}) 
