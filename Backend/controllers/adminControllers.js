@@ -30,7 +30,7 @@ export const getallAdmins = asyncHandler(async (req,res)=>{
 export const getaAdmin = asyncHandler(async(req,res)=>{
     try {
         const {id} = req.body;
-        const getAdmin =await student.findById(id)
+        const getAdmin =await admin.findById(id)
         res.json({getAdmin:getAdmin,status:201})
     } catch (error) {
         res.json({error:error,status:404})
@@ -39,10 +39,10 @@ export const getaAdmin = asyncHandler(async(req,res)=>{
 
 // update admin
 
-export const updateUser = asyncHandler(async(req,res)=>{
+export const updateAdmin = asyncHandler(async(req,res)=>{
     try {
         const {id} = req.body
-        const updateadmin = await student.findByIdAndUpdate(id,{
+        const updateadmin = await admin.findByIdAndUpdate(id,{
             aname:req?.body.aname,
             aphone:req?.body.aphone,
             aemail:req?.body.aemail,
@@ -55,3 +55,16 @@ export const updateUser = asyncHandler(async(req,res)=>{
     }
 })
 
+// block admin
+
+export const triggerblockadmin = asyncHandler(async(req,res)=>{
+    const {id} = req.body
+    try {
+        const triggerblock = await admin.findByIdAndUpdate(id,{
+            isBlocked:!req.body?.isBlocked
+        },{new:true})
+        res.json({triggerblock:triggerblock,status:201})
+    } catch (error) {
+        res.json({status:404,error:error})
+    }
+})

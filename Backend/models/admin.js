@@ -18,6 +18,9 @@ const adminSchema = new mongoose.Schema({
     },
     aemail:{
         type:String
+    },
+    isBlocked:{
+        type:Boolean
     }
 },{timestamps:true})
 
