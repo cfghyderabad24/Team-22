@@ -79,3 +79,14 @@ app.post('/api/teacher/contact', async (request, response) => {
     }
 });
 
+
+// Student Data to Download in CSV Format
+app.get('/api/admin/getallstudents', (req, res) => {
+    const fields = ['id', 'name', 'age', 'level', 'schoolName'];
+    const json2csvParser = new Parser({ fields });
+    const csv = json2csvParser.parse(students);
+    res.header('Content-Type', 'text/csv');
+    res.attachment('students.csv');
+    res.send(csv);
+  });
+
