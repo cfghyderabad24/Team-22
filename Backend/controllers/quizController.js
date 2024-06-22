@@ -4,11 +4,12 @@ import userAttempt from '../models/userAttempt.js';
 
 // Create Questions
 export const createQuestions = asyncHandler(async(req,res) => {
-    const {questions, options, correct } = req.body;
-    if(!questions || !options || correct === undefined) {
+    const {bookName, questions, options, correct } = req.body;
+    if(!bookName || !questions || !options || correct === undefined) {
         return res.status(400).json({message: 'All Fields are Required'});
     }
     const newQuestion = new question({
+        bookName,
         questions,
         options,
         correct
@@ -25,8 +26,9 @@ export const createQuestions = asyncHandler(async(req,res) => {
 
 // Get All Questions
 export const getQuestions = asyncHandler(async(req,res)=> {
+    const {bookName} = req.params;
     try {
-        const ques = await question.find();
+        const ques = await question.find({ bookName});
         res.json(ques);
     } catch (err) {
         res.status(500).json({ message: err.message });
