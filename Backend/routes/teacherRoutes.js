@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createTeacher, getaTeacher, getallTeachers, triggerblockteacher, updateTeacher } from "../controllers/teacherController.js";
+import { createTeacher, getaTeacher, getallTeachers, loginTeacher, triggerblockteacher, updateTeacher } from "../controllers/teacherController.js";
 
 
 
@@ -10,6 +10,7 @@ router.route('/blockteacher').put(triggerblockteacher)
 router.route('/getallteachers').get(getallTeachers)
 router.route('/getateacher').get(getaTeacher)
 router.route('/updateteacher').put(updateTeacher)
+router.route('/loginTeacher').get(loginTeacher)
 
 
 

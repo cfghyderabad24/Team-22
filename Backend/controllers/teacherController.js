@@ -25,9 +25,9 @@ export const loginTeacher = asyncHandler(async (req,res)=>{
 
     if(findTeacher?.isBlocked === true) res.json({status:409,message:"Account Blocked"})
     
-    if(findTeacher && await findTeacher.isPasswordMatched(teacherpassword)){
+    if(findTeacher && await findTeacher.isPasswordMatched(tpassword)){
         const refreshToken = await generateToken(findTeacher?._id)
-        const updateteacher = await admin.findByIdAndUpdate(findTeacher?.id,{
+        const updateteacher = await teacher.findByIdAndUpdate(findTeacher?.id,{
             refreshToken:refreshToken
         },{new:true})
 
