@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
 const bookSchema = new mongoose.Schema({
-  book_title: { type: String, required: true },
-  bid: { type: String, required: true, unique: true },
-  noc: { type: Number, required: true },
-  level: { type: Number, required: true },
-  genre: { type: String, required: true },
-  bok_lan: { type: String, required: true },
-  author: { type: String, required: true },
-  publication_name: { type: String, required: true },
-});
+    book_title:{type:String},
+    bid:{type:String,required:true,unique:true},
+    noc:{type:Number},
+    level:{type:Number},
+    genre:{type:String},
+    bok_lan:{type:String},
+    author:{type:String},
+    publication_name:{type:String},
+},{timestamps:true});
 
 const book = mongoose.model("Book", bookSchema);
 
