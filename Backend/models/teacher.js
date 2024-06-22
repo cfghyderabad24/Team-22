@@ -20,7 +20,7 @@ const teacherSchema = new mongoose.Schema({
         type:String
     },
     isBlocked:{
-        type:String,
+        type:Boolean,
     },
     refreshToken:{
         type:String,
@@ -33,6 +33,26 @@ const teacherSchema = new mongoose.Schema({
         }
 }]
 },{timestamps:true})
+
+teacherSchema.pre('save',async function(next){
+    if(!this.isModified('tpassword')) { next() }
+    const salt = await bcrypt.genSaltSync(10)   
+    this.tpassword = await bcrypt.hash(this.tpassword,salt)
+    next()
+} )
+
+teacherSchema.methods.createPasswordResetToken = async function(){
+    const resetToken = crypto.randomBytes(32).toString("hex")
+    this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex')
+    this.passwordResetExpires = Date.now() + 30 * 60 * 1000  // 30 minutes
+    return resetToken
+}
+
+
+teacherSchema.methods.isPasswordMatched = async function(enteredPassword){
+    return await bcrypt.compare(enteredPassword,this.tpassword)
+}
+
 
 
 const teacher = mongoose.model('teacher',teacherSchema)

@@ -33,7 +33,6 @@ const adminSchema = new mongoose.Schema({
 
 adminSchema.pre('save',async function(next){
     if(!this.isModified('apassword')) { next() }
-     console.log("eneter");
     const salt = await bcrypt.genSaltSync(10)   
     this.apassword = await bcrypt.hash(this.apassword,salt)
     next()
