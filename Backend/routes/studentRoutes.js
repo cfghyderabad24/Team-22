@@ -4,7 +4,7 @@ import { createStudent, deleteStudent, getaStudent, getallStudents } from "../co
 const router = Router()
 
 router.route('/registerstudent').post(createStudent)
-router.route('/deletestudent').delete(deleteStudent)
+router.route('/deletestudent/:id').delete(deleteStudent)
 router.route('/getallstudents').get(getallStudents)
 router.route('/getastudent').get(getaStudent)
 

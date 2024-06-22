@@ -18,7 +18,8 @@ const studentSchema = new mongoose.Schema({
     },
     uSchool:{
         type:String
-    }
+    },
+    
 },{timestamps:true})
 
 

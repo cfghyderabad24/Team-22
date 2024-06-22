@@ -5,6 +5,8 @@ import dbConnect from './dbConnect.js';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import studentRouter from './routes/studentRoutes.js'
+import adminRouter from './routes/adminRoutes.js'
+import teacherRouter from './routes/teacherRoutes.js'
 import passport from 'passport';
 import initializePassport from './services/passport.js';
 import bodyParser from 'body-parser';
@@ -25,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 
 app.use('/api/user',studentRouter)
+app.use('/api/admin',adminRouter)
+app.use('/api/teacher',teacherRouter)
 
 dbConnect() 
 .then(()=>{
