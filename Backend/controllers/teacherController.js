@@ -43,6 +43,7 @@ export const loginTeacher = asyncHandler(async (req,res)=>{
             tname:findTeacher?.tname,
             temail:findTeacher?.temail,
             tphone:findTeacher?.tphone,
+            status:201
         })
     }else{
         res.json({status:404,message:"Invalid Credentials"})
