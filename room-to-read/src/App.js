@@ -33,13 +33,9 @@ function App() {
               </div>
             </>
           } />
-          {/* <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="reader" element={<ReaderDashboard />} />
-        <Route path="author" element={<AuthorDashboard />} />
-        <Route path="/:id/homepage" exact element={<ReaderHome />} />
-        <Route path="/:id/mylibrary" element={<ReaderLibrary />} />
-        <Route path="/:id/myfavourites" element={<ReaderFavourites />} /> */}
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Sign_in />} />
+          <Route path="studentregister" element={<StudentRegister />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -3,7 +3,6 @@ import './Contact.css'
 import msg_icon from '../../assests/images/msg_icon.png'
 import phone from '../../assests/images/phone.png'
 import mail from '../../assests/images/mail.png'
-import insta from '../../assests/images/insta.png'
 import location from '../../assests/images/location.png'
 
 const Contact = () => {
@@ -18,7 +17,6 @@ const Contact = () => {
                     <li><img src={mail} alt=" " />info@roomtoread.org</li>
                     <li><img src={phone} alt=" " />+91 1234 567 890</li>
                     <li><img src={location} alt=" " />India</li>
-                    <li><img src={insta} alt=" " />Connect with us on Instagram</li>
                 </ul>
             </div>
 
