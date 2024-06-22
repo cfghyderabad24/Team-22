@@ -14,4 +14,31 @@ export const createStudent = asyncHandler( async (req,res)=>{
     }
 })
 
-// sadadsf
+export const getallStudents = asyncHandler(async (req,res)=>{
+    try {
+        const getStudents = await student.find()
+        res.json(getStudents)
+        
+    } catch (error) {
+     throw new Error(error)   
+    }
+
+})
+
+
+// get a student
+
+
+export const getaStudent = asyncHandler(async(req,res)=>{
+    try {
+        const {id} = req.user;
+
+        const getStudent =await student.findById(id)
+        res.json(getStudent)
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+
+
+
