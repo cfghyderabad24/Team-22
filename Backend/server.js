@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import dbConnect from './dbConnect.js';
+import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -13,9 +15,6 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 app.use(cookieParser())
-
-
-
 
 
 dbConnect() 
