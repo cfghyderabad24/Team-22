@@ -24,3 +24,34 @@ export const getallAdmins = asyncHandler(async (req,res)=>{
      res.json({error:error,status:404}) 
     }
 })
+
+// admin get a admin
+
+export const getaAdmin = asyncHandler(async(req,res)=>{
+    try {
+        const {id} = req.body;
+        const getAdmin =await student.findById(id)
+        res.json({getAdmin:getAdmin,status:201})
+    } catch (error) {
+        res.json({error:error,status:404})
+    }
+})
+
+// update admin
+
+export const updateUser = asyncHandler(async(req,res)=>{
+    try {
+        const {id} = req.body
+        const updateadmin = await student.findByIdAndUpdate(id,{
+            aname:req?.body.aname,
+            aphone:req?.body.aphone,
+            aemail:req?.body.aemail,
+        },{new:true})
+
+        res.json({status:201})
+
+    } catch (error) {
+        res.json({status:500,error})
+    }
+})
+
