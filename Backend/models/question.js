@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
 
 const questionSchema = new mongoose.Schema({
-    question: String,
+    bookName: String,
+    questions: String,
     options: [String],
     correct: Number
 });
 
-const question = mongoose.model('Question',questionSchema);
+const question = mongoose.model('question',questionSchema);
 
 export default question;

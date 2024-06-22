@@ -2,6 +2,27 @@ import asyncHandler from 'express-async-handler';
 import question from '../models/question.js';
 import userAttempt from '../models/userAttempt.js';
 
+// Create Questions
+export const createQuestions = asyncHandler(async(req,res) => {
+    const {questions, options, correct } = req.body;
+    if(!questions || !options || correct === undefined) {
+        return res.status(400).json({message: 'All Fields are Required'});
+    }
+    const newQuestion = new question({
+        questions,
+        options,
+        correct
+    });
+
+    try {
+        const savedQuestion = await newQuestion.save();
+        res.status(201).json(savedQuestion);
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+});
+
+
 // Get All Questions
 export const getQuestions = asyncHandler(async(req,res)=> {
     try {
