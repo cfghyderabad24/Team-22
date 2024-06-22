@@ -5,3 +5,5 @@ const router = express.Router();
 
 router.route('/question').get(getQuestions);
 router.route('/submitquiz').post(userQuestions);
+
+export default router;

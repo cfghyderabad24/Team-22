@@ -13,6 +13,7 @@ import initializePassport from './services/passport.js';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
 import contact from './models/contactTeacher.js';
+import quizRouter from './routes/quizRoutes.js';
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 
 app.use('/api/user',studentRouter)
+app.use('/api/quiz',quizRouter)
 app.use('/api/admin',adminRouter)
 app.use('/api/teacher',teacherRouter)
 app.use('/api/book',bookRouter)
