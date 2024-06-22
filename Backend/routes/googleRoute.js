@@ -9,5 +9,8 @@ import initializePassport from '../services/passport.js';
 initializePassport(passport);
 const router = express.Router();
 
+router.get('/google',passport.authenticate('google',{scope:['profile','email']}));
+
+
 
 
