@@ -4,6 +4,8 @@ import cors from 'cors';
 import dbConnect from './dbConnect.js';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import passport from 'passport';
+import initializePassport from '../services/passport.js';
 
 dotenv.config();
 
@@ -25,3 +27,5 @@ dbConnect()
     })
 })
 .catch(e=>console.log("DB Connection Lost"))
+
+app.use(passport.initialize());
