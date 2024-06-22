@@ -1,130 +1,107 @@
-import React, { useEffect, useState } from 'react'
-import * as yup from 'yup'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import {useFormik} from 'formik'
-import CustomtInput from '../CustomInput';
-import { toast } from 'react-toastify'
-import { useDispatch, useSelector } from 'react-redux'
-import Meta from '../Meta'
-const SessionRegistraion = () => {
+import React from 'react';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
+import CustomInput from '../CustomInput';
+import { useDispatch } from 'react-redux';
+import Meta from '../Meta';
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const {AlreadyRegisterd} = useSelector(state=>state.auth)
-    const {Session} = useSelector(state=>state.admin)
+const Studentregistration = () => {
+  const dispatch = useDispatch();
 
-    let schema = yup.object().shape({
-        registerid:yup.string().required('Registration Id Is Required'),
-        year:yup.number().required('Select Your Year'),
-        registername: yup.string().required('Name is Required')
-    })
+  const schema = yup.object().shape({
+    uid: yup.string().required('Registration Id Is Required'),
+    uname: yup.string().required('Name is Required'),
+    ulevel: yup.string().required('Level is Required'),
+    uage: yup.number().required('Age is Required').positive().integer(),
+    uSchool: yup.string().required('School is Required'),
+  });
 
-    // useEffect(()=>{
-    //          if(AlreadyRegisterd?.registerid !== undefined)
-    //         {
-    //             toast.success('Registration Successfull And Mail Has Been Generated')
-    //             setTimeout(()=>{
-    //                 navigate('/sessions')
-    //             },3500) 
-    //             dispatch(resetState())
-    //         }
-    //         else if(AlreadyRegisterd?.message === "Registration Completed For this Id"){
-    //             toast.error("Registration Completed For This ID ")
-    //             dispatch(resetState())
-    //         }
-    // },[AlreadyRegisterd,dispatch,navigate])
-
-
-    const location = useLocation()
-    const getSessionId = location.pathname.split('/')[2]
-
-
-    const [SessionContent,setSessionContent] = useState(Session)
-
-    // useEffect(()=>{
-    //     if(getSessionId!==undefined)
-    //     {
-    //         dispatch(GetSession(getSessionId))
-    //     }
-    // },[getSessionId,dispatch])
-
-    useEffect(()=>{
-        setSessionContent(Session)
-    },[Session])
-
-
-    const formik = useFormik({
-        initialValues:{
-           uid:'',
-           uname:'',
-           ulevel:'',
-           uage:'',
-           uSchool:''
-        },
-        validationSchema:schema,
-        onSubmit:(values)=>{    
-            // formik.values.EventReg =  Session?.sessiontitle  
-            // // dispatch(registrationSlice(values))
-            formik.resetForm()
-        }
-    })
+  const formik = useFormik({
+    initialValues: {
+      uid: '',
+      uname: '',
+      ulevel: '',
+      uage: '',
+      uSchool: '',
+    },
+    validationSchema: schema,
+    onSubmit: (values) => {
+      console.log(values);
+      // dispatch your action here
+      // dispatch(registrationSlice(values))
+      formik.resetForm();
+    },
+  });
 
   return (
-    <div className='container-xxl'>
-        <Meta title="Registrations"/>
-        <div className="row">
-            <div className="col-12">
-                {
-             <form action="" className='my-4 submit-form bg-white' onSubmit={formik.handleSubmit}>
-                        <h4>{`${Session?.sessiontitle} Registrations `}</h4>
-                        <CustomtInput type="text" placeholder="Enter Your Id" name='registerid' onChange={formik.handleChange('registerid')} value={formik.values.registerid}/>
-
-
-                        <div className="error">
-                        {
-                            formik.touched.registerid && formik.errors.registerid
-                        }
-                        </div>
-
-                        <CustomtInput type="text" placeholder="Enter Your Name" name='registername' onChange={formik.handleChange('registername')} value={formik.values.registername}/>
-
-
-                        <div className="error">
-                        {
-                            formik.touched.registername && formik.errors.registername
-                        }
-                        </div>
-
-                        <select className='form-select CustomtInput' name='year' value={formik.values.year} onChange={formik.handleChange('year')} onBlur={formik.handleBlur('year')}>
-                            <option selected value={0}>Select Your Year</option>
-                            <option value={1}>First Year</option>
-                            <option value={2}>Second Year</option>
-                            <option value={3}>Third Year</option>
-                        </select>
-
-                        <div className="error">
-                        {
-                            formik.touched.year && formik.errors.year
-                        }
-                        </div>
-                        <CustomtInput type="date" placeholder={"Date"} disabled={true} value={formik.values.date}/>
-
-                        <CustomtInput type="time" placeholder={"Starts At"} disabled={true} value={formik.values.startAt}/>
-
-                        <CustomtInput type="time" placeholder={"Ends"} disabled={true} value={formik.values.ends}/>
-
-                        <CustomtInput type="text" placeholder={"Venue"}  disabled={true} value={formik.values.venue} />
-
-                        <div className='col-12 d-flex justify-content-between'>
-                        <Link to={'/sessions'}><button className='btn btn-primary'>Go Back</button></Link>
-                        <button className='btn btn-primary submit-button' type='submit'>Register</button>
-                        </div>
-                </form>
-}
+    <div className="container-xxl">
+      <Meta title="Registrations" />
+      <div className="row">
+        <div className="col-12">
+          <form className="my-4 submit-form bg-white" onSubmit={formik.handleSubmit}>
+            <CustomInput
+              type="text"
+              placeholder="Enter Your Id"
+              name="uid"
+              onChange={formik.handleChange}
+              value={formik.values.uid}
+              onBlur={formik.handleBlur}
+            />
+            <div className="error">
+              {formik.touched.uid && formik.errors.uid ? formik.errors.uid : null}
             </div>
+            <CustomInput
+              type="text"
+              placeholder="Enter Your Name"
+              name="uname"
+              onChange={formik.handleChange}
+              value={formik.values.uname}
+              onBlur={formik.handleBlur}
+            />
+            <div className="error">
+              {formik.touched.uname && formik.errors.uname ? formik.errors.uname : null}
+            </div>
+            <CustomInput
+              type="text"
+              placeholder="Enter Your Level"
+              name="ulevel"
+              onChange={formik.handleChange}
+              value={formik.values.ulevel}
+              onBlur={formik.handleBlur}
+            />
+            <div className="error">
+              {formik.touched.ulevel && formik.errors.ulevel ? formik.errors.ulevel : null}
+            </div>
+            <CustomInput
+              type="number"
+              placeholder="Enter Your Age"
+              name="uage"
+              onChange={formik.handleChange}
+              value={formik.values.uage}
+              onBlur={formik.handleBlur}
+            />
+            <div className="error">
+              {formik.touched.uage && formik.errors.uage ? formik.errors.uage : null}
+            </div>
+            <CustomInput
+              type="text"
+              placeholder="Enter Your School"
+              name="uSchool"
+              onChange={formik.handleChange}
+              value={formik.values.uSchool}
+              onBlur={formik.handleBlur}
+            />
+            <div className="error">
+              {formik.touched.uSchool && formik.errors.uSchool ? formik.errors.uSchool : null}
+            </div>
+            <button className="btn btn-primary submit-button" type="submit">
+              Register
+            </button>
+          </form>
         </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SessionRegistraion
+export default Studentregistration;

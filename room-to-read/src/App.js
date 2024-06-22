@@ -9,11 +9,11 @@ import Home from './components/Home/Home';
 // import OurTeam from './components/OurTeam/OurTeam';
 // import Contact from './components/Contact/Contact';
 // import Footer from './components/Footer/Footer';
-import StudentRegister from './components/Register/StudentRegister';
 import StudentLogin from './components/pages/TeacherLogin';
 import Layout from './components/Layout';
 import TeacherLogin from './components/pages/TeacherLogin';
 import GetStudentList from './components/pages/getStudentList';
+import Studentregistration from './components/pages/studentRegistration';
 // import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 
@@ -24,8 +24,10 @@ function App() {
         <Routes>
           <Route path={'/'} element={<Layout/>}>
           <Route path='/home' element={<Home/>}/>
+          <Route path='/' index element={<TeacherLogin/>}/>
           <Route path='/login' index element={<TeacherLogin/>}/>
           <Route path='/studentlist' index element={<GetStudentList/>}/>
+          <Route path='/studentregistration' index element={<Studentregistration/>}/>
           </Route>
           {/* <Route path="register" element={<Sign_in />} /> */}
         </Routes>
