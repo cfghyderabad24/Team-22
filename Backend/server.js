@@ -5,6 +5,7 @@ import dbConnect from './dbConnect.js';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import studentRouter from './routes/studentRoutes.js'
+import adminRouter from './routes/adminRoutes.js'
 import passport from 'passport';
 import initializePassport from './services/passport.js';
 
@@ -20,6 +21,7 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 
 app.use('/api/user',studentRouter)
+app.use('/api/admin',adminRouter)
 
 dbConnect() 
 .then(()=>{

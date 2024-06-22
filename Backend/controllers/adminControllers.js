@@ -7,10 +7,10 @@ export const createAdmin = asyncHandler(async (request,response) => {
     const findUser = await admin.findOne({aid})
     if(!findUser){
         const newAdmin = admin.create(request.body)
-        response.status(201).json(newAdmin);
+        response.status(201).json({newAdmin:newAdmin,status:201});
     }   
     else{
-       response.status(404).json({message:"Admin already exists"});
+       response.status(404).json({message:"Admin already exists",status:404});
     }
 });
 
@@ -48,10 +48,10 @@ export const updateAdmin = asyncHandler(async(req,res)=>{
             aemail:req?.body.aemail,
         },{new:true})
 
-        res.json({status:201})
+        res.json({status:201,updateAdmin:updateadmin})
 
     } catch (error) {
-        res.json({status:500,error})
+        res.json({status:500,error:error})
     }
 })
 

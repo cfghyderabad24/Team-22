@@ -32,7 +32,7 @@ export const getallStudents = asyncHandler(async (req,res)=>{
 
 export const getaStudent = asyncHandler(async(req,res)=>{
     try {
-        const {id} = req.user;
+        const {id} = req.body;
 
         const getStudent =await student.findById(id)
         res.json({getStudent:getStudent,status:201})
@@ -56,5 +56,6 @@ export const deleteStudent = asyncHandler(async (req,res)=>{
         res.json({error:error,status:404})
     }
 })
+
 
 
