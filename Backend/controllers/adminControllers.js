@@ -68,3 +68,4 @@ export const triggerblockadmin = asyncHandler(async(req,res)=>{
         res.json({status:404,error:error})
     }
 })
+
