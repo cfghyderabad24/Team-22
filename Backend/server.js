@@ -1,7 +1,9 @@
-import express from 'express'
-import dotenv from 'dotenv/config'
-import cors from 'cors'
-import dbConnect from './dbConnect.js'
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import dbConnect from './dbConnect.js';
+
+dotenv.config();
 
 const app = express()
 const PORT = process.env.PORT || 8080
