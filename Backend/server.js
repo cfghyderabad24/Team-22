@@ -4,6 +4,7 @@ import cors from 'cors';
 import dbConnect from './dbConnect.js';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import studentRouter from './routes/studentRoutes.js'
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(morgan('dev'))
 
 app.use(cookieParser())
 
+app.use('/api/user',studentRouter)
 
 dbConnect() 
 .then(()=>{

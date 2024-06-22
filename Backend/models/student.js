@@ -11,10 +11,10 @@ const studentSchema = new mongoose.Schema({
         required:true
     },
     ulevel:{
-        type:String
+        type:Number
     },
     uage:{
-        type:String
+        type:Number
     },
     uSchool:{
         type:String
