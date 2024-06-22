@@ -57,3 +57,13 @@ export const userQuestions = asyncHandler(async(req,res)=> {
         res.status(500).json({message: err.message});
     }
 });
+
+// Get Distinct Book Names
+export const getBookNames = asyncHandler(async (req,res) => {
+    try {
+        const books = await question.distinct('bookName');
+        res.json(books);
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+});
