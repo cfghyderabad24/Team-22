@@ -1,6 +1,7 @@
 import teacher from '../models/teacher.js';
 import asyncHandler from 'express-async-handler';
 
+// Teacher Creation
 export const createTeacher = asyncHandler(async (request,response) => {
     const {tid} = request.body
     const findUser = await teacher.findOne({tid})
