@@ -1,36 +1,117 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import './Navbar.css'
-import { Link } from 'react-scroll';
-import menu_icon from '../../assests/images/menu_icon.png'
-import logos from '../../assests/images/logos.jpeg'
+import cookies from "../cookies";
+import { HamburgetMenuClose, HamburgetMenuOpen } from "./Icons";
 
-const Navbar = () => {
-    const [menu, setMenu] = useState(false)
-    const [sticky, setSticky] = useState(false);
+function NavBar() {
+  const [click, setClick] = useState(false);
 
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-            window.scrollY > 70 ? setSticky(true) : setSticky(false)
-        })
-    });
+  const handleLogOut = ()=>{
+    handleClick()
+    console.log('hi');
+    localStorage.clear()
+    cookies.remove('adminData')
+    window.location.reload()
+  }
 
-    const toggleMenu = () => {
-        menu ? setMenu(false) : setMenu(true);
-    };
 
-    return (
-        <nav className={`container ${sticky ? 'dark-nav' : ''}`}>
-            <img src={logos} alt="" className="logo" />
-            <ul className={menu ? '' : 'hide-menu'}>
-                <li><Link to='home' smooth={true} offset={0} duration={500}>Home</Link></li>
-                <li><Link to='show' smooth={true} offset={-260} duration={500}>Library</Link></li>
-                <li>Login</li>
-                <li><Link to='about' smooth={true} offset={-200} duration={500}>About Us</Link></li>
-                <li><Link to='contact' smooth={true} offset={-260} duration={500} className='btn'>Contact Us</Link></li>
-            </ul>
-            <img src={menu_icon} alt='' className='menu-icon' onClick={toggleMenu} />
-        </nav>
-    )
+  const handleClick = () => setClick(!click);
+  return (
+    <>
+      <nav className="navbar">
+        <div className="nav-container">
+          <NavLink exact to="/" className="nav-logo">
+            <span>Room To Read</span>
+            <span className="icon">
+              {/* <CodeIcon /> */}
+            </span>
+          </NavLink>
+
+          <ul className={click ? "nav-menu active" : "nav-menu"}>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/home"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+              Home
+              </NavLink>
+            </li>
+            
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/sessions"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                RegistrationPage
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/attendance"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                StudentList
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/contact"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Library Dashboard
+              </NavLink>
+            </li>
+           {cookies.get('adminData') ? <li className="nav-item">
+              <NavLink
+                exact
+                to="/"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleLogOut}
+              >
+               LogOut
+              </NavLink>
+            </li>:
+            <li className="nav-item">
+            <NavLink
+                exact
+                to="/"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+               Login
+              </NavLink></li>}
+          </ul>
+          <div className="nav-icon" onClick={handleClick}>
+            {click ? (
+              <span className="icon">
+                <HamburgetMenuClose />
+              </span>
+            ) : (
+                <span className="icon">
+                  <HamburgetMenuOpen />{" "}
+              </span>
+            )}
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 }
 
-export default Navbar
+export default NavBar;
