@@ -1,5 +1,7 @@
 import teacher from '../models/teacher.js';
+import generateToken from '../utils/jwtToken.js';
 import asyncHandler from 'express-async-handler';
+
 
 // Teacher Creation
 export const createTeacher = asyncHandler(async (request,response) => {
