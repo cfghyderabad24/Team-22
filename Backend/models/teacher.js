@@ -19,6 +19,9 @@ const teacherSchema = new mongoose.Schema({
     temail:{
         type:String
     },
+    isBlocked:{
+        type:String,
+    },
     studentmap:[{
         student:{
             type:mongoose.Schema.Types.ObjectId,

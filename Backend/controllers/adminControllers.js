@@ -14,11 +14,11 @@ export const createAdmin = asyncHandler(async (request,response) => {
     }
 });
 
-// Students Table Dashboard
-export const getallStudents = asyncHandler(async (req,res)=>{
+// admin get all admins
+export const getallAdmins = asyncHandler(async (req,res)=>{
     try {
-        const getStudents = await student.find()
-        res.json({getStudents:getStudents,status:201})
+        const getAdmins = await admin.find()
+        res.json({getAdmins:getAdmins,status:201})
         
     } catch (error) {
      res.json({error:error,status:404}) 
@@ -27,3 +27,46 @@ export const getallStudents = asyncHandler(async (req,res)=>{
 
 
 
+// admin get a admin
+
+export const getaAdmin = asyncHandler(async(req,res)=>{
+    try {
+        const {id} = req.body;
+        const getAdmin =await admin.findById(id)
+        res.json({getAdmin:getAdmin,status:201})
+    } catch (error) {
+        res.json({error:error,status:404})
+    }
+})
+
+// update admin
+
+export const updateAdmin = asyncHandler(async(req,res)=>{
+    try {
+        const {id} = req.body
+        const updateadmin = await admin.findByIdAndUpdate(id,{
+            aname:req?.body.aname,
+            aphone:req?.body.aphone,
+            aemail:req?.body.aemail,
+        },{new:true})
+
+        res.json({status:201})
+
+    } catch (error) {
+        res.json({status:500,error})
+    }
+})
+
+// block admin
+
+export const triggerblockadmin = asyncHandler(async(req,res)=>{
+    const {id} = req.body
+    try {
+        const triggerblock = await admin.findByIdAndUpdate(id,{
+            isBlocked:!req.body?.isBlocked
+        },{new:true})
+        res.json({triggerblock:triggerblock,status:201})
+    } catch (error) {
+        res.json({status:404,error:error})
+    }
+})
