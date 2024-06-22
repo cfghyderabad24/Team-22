@@ -7,3 +7,5 @@ const userAttemptSchema = new mongoose.Schema({
 });
 
 const userAttempt = mongoose.model('userAttempt',userAttemptSchema);
+
+export default userAttempt;
