@@ -9,10 +9,6 @@ import About from './components/About/About';
 import OurTeam from './components/OurTeam/OurTeam';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
-import StudentProfile from './components/Student/student';
-import CheckIn from './components/CheckIn/checkin';
-import CheckOut from './components/Checkout/checkout';
-
 // import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 
@@ -37,6 +33,13 @@ function App() {
               </div>
             </>
           } />
+          {/* <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="reader" element={<ReaderDashboard />} />
+        <Route path="author" element={<AuthorDashboard />} />
+        <Route path="/:id/homepage" exact element={<ReaderHome />} />
+        <Route path="/:id/mylibrary" element={<ReaderLibrary />} />
+        <Route path="/:id/myfavourites" element={<ReaderFavourites />} /> */}
         </Routes>
       </BrowserRouter>
     </>
