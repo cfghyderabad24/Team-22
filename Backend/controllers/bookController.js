@@ -55,9 +55,9 @@ export const getaBook = asyncHandler(async(req,res)=>{
         if(!getBook) res.json({error:error,status:404})
 
         const updateViews = await book.findByIdAndUpdate(id,{
-            $inc:{noc:1}  // increment function in mongodb
+            $inc:{noc:-1}  // increment function in mongodb
         },{new:true})
-        res.json({getBook:getBook,status:201})
+        res.json({getBook:updateViews,status:201})
     } catch (error) {
         throw new Error(error)
     }
@@ -73,9 +73,9 @@ export const returnaBook = asyncHandler(async(req,res)=>{
         if(!returnBook) res.json({error:error,status:404})
 
         const updateViews = await book.findByIdAndUpdate(id,{
-            $dec:{noc:1}  // decrement function in mongodb
+            $inc:{noc:1}  // decrement function in mongodb
         },{new:true})
-        res.json({returnBook:returnBook,status:201})
+        res.json({returnBook:updateViews,status:201})
     } catch (error) {
         throw new Error(error)
     }

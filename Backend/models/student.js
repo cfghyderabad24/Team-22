@@ -19,6 +19,10 @@ const studentSchema = new mongoose.Schema({
     uSchool:{
         type:String
     },
+    refreshToken:{
+        type:String,
+        default:""
+    },
     
 },{timestamps:true})
 

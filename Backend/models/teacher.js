@@ -22,6 +22,10 @@ const teacherSchema = new mongoose.Schema({
     isBlocked:{
         type:String,
     },
+    refreshToken:{
+        type:String,
+        default:""
+    },
     studentmap:[{
         student:{
             type:mongoose.Schema.Types.ObjectId,
