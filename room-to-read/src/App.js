@@ -1,9 +1,50 @@
-import React from 'react'
+import React from 'react';
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import Programs from './components/Programs/Programs'
+import Title from './components/Title/Title';
+import About from './components/About/About';
+import OurTeam from './components/OurTeam/OurTeam';
+import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
+// import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
-const App = () => {
+
+function App() {
   return (
-    <div>App</div>
-  )
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="*" element={
+            <>
+              <Navbar />
+              <Home />
+              <div className='container'>
+                <Title title='Our Programs' subtitle="Our Work is in alignment to the NIPUN Bharat Mission by the Ministry of Education (MOE)" />
+                <Programs />
+                <About />
+                <Title title='Our Team' subtitle="Meet our global leaders who have deep expertise in International Education, Business and Finance" />
+                <OurTeam />
+                <Title title='Contact Us' subtitle="Let's connect" />
+                <Contact />
+                <Footer />
+              </div>
+            </>
+          } />
+          {/* <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="reader" element={<ReaderDashboard />} />
+        <Route path="author" element={<AuthorDashboard />} />
+        <Route path="/:id/homepage" exact element={<ReaderHome />} />
+        <Route path="/:id/mylibrary" element={<ReaderLibrary />} />
+        <Route path="/:id/myfavourites" element={<ReaderFavourites />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </>
+
+  );
 }
 
-export default App
+export default App;
