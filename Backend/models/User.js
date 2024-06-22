@@ -13,3 +13,8 @@ const GoogleSchema = new mongoose.Schema({
     name: {type:String, required:true},
     email:{type:String, required:true},
 });
+
+const User = mongoose.model('User',UserSchema);
+const Google = mongoose.model('Google',GoogleSchema);
+
+export {User, Google}
