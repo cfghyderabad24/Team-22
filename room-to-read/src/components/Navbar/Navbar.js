@@ -9,7 +9,6 @@ function NavBar() {
 
   const handleLogOut = ()=>{
     handleClick()
-    console.log('hi');
     localStorage.clear()
     cookies.remove('adminData')
     window.location.reload()
@@ -44,7 +43,7 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/sessions"
+                to="/studentregistration"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
@@ -56,7 +55,7 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/attendance"
+                to="/studentlist"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
@@ -67,7 +66,7 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/contact"
+                to="/librarydashboard"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}

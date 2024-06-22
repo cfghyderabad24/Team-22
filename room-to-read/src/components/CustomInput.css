@@ -1,0 +1,59 @@
+*{
+    font-family: sans-serif;
+  }
+  
+  body::-webkit-scrollbar{
+    width: 0px;
+  }
+  
+  
+  /* Custom Input Starts Here */
+  
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 5px rgba(81, 203, 238, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(81, 203, 238, 0.7);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(81, 203, 238, 0.7);
+    }
+  }
+  
+  .CustomtInput {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .CustomtInput:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(81, 203, 238, 0.7);
+    animation: glowing 1.5s infinite;
+  }
+  
+  
+  .submit-button {
+    color: white;
+    background-color: rgb(62, 125, 204);
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .submit-form{
+    box-shadow: 0 0 20px rgba(137, 215, 237, 0.7);
+    border-radius: 10px;
+    padding:20px;
+  }
+  
+  /* Custom Input Ends Here */
+  
+  
+  

@@ -33,8 +33,8 @@ const Layout = () => {
             <Outlet/>
         </div>
       </div>
-      <Contact />
-    <Footer />
+      {/* <Contact /> */}
+    {/* <Footer /> */}
     </>
   )
 }

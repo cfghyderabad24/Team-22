@@ -10,8 +10,10 @@ import Home from './components/Home/Home';
 // import Contact from './components/Contact/Contact';
 // import Footer from './components/Footer/Footer';
 import StudentRegister from './components/Register/StudentRegister';
-import StudentLogin from './components/pages/StudentLogin';
+import StudentLogin from './components/pages/TeacherLogin';
 import Layout from './components/Layout';
+import TeacherLogin from './components/pages/TeacherLogin';
+import GetStudentList from './components/pages/getStudentList';
 // import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 
@@ -20,26 +22,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="*" element={
-            <>
-              
-              <Home/>
-              <div className='container'>
-                <Title title='Our Programs' subtitle="Our Work is in alignment to the NIPUN Bharat Mission by the Ministry of Education (MOE)" />
-                <Programs />
-                <About />
-                <Title title='Our Team' subtitle="Meet our global leaders who have deep expertise in International Education, Business and Finance" />
-                <OurTeam />
-                <Title title='Contact Us' subtitle="Let's connect" />
-                <Contact />
-                <Footer />
-              </div>
-            </>
-          } /> */}
           <Route path={'/'} element={<Layout/>}>
-          <Route path='/home' element={<Home/>}></Route>
-          <Route path='/studentlogin' element={<StudentLogin/>}/>
-          <Route path="/studentregister" element={<StudentRegister/>} />
+          <Route path='/home' element={<Home/>}/>
+          <Route path='/login' index element={<TeacherLogin/>}/>
+          <Route path='/studentlist' index element={<GetStudentList/>}/>
           </Route>
           {/* <Route path="register" element={<Sign_in />} /> */}
         </Routes>
