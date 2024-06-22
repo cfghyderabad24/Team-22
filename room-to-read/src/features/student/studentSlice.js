@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk,createAction } from "@reduxjs/toolkit";
 import studentServices from "./studentServices";
+import { toast } from "react-toastify";
 
 const initialState = {
     isError:false,
@@ -32,6 +33,10 @@ const serverSlice = createSlice({
             state.isError = false
             state.isSuccess = true
             state.isLoading = false
+            if(action.payload?.status === 201) toast.success("Student Registration Completed")
+            else if(action.payload?.status === 404){
+                toast.error('Student Registration Failed')
+            }
         })
         .addCase(studentRegistration.rejected,(state,action)=>{
             state.isError = true
