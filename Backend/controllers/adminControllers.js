@@ -1,6 +1,7 @@
 import admin from '../models/admin.js';
 import contact from '../models/contactTeacher.js';
 import asyncHandler from 'express-async-handler';
+import generateToken from '../utils/jwtToken.js';
 
 // Admin Creation
 export const createAdmin = asyncHandler(async (request,response) => {
@@ -57,6 +58,8 @@ export const updateAdmin = asyncHandler(async(req,res)=>{
     }
 })
 
+
+
 // block admin
 
 export const triggerblockadmin = asyncHandler(async(req,res)=>{
@@ -81,3 +84,40 @@ export const getallIssues = asyncHandler(async (request,response)=>{
      response.status(404).json({message:"No Issues"}) 
     }
 });
+
+
+
+// login admin
+
+
+export const loginAdmin = asyncHandler(async (req,res)=>{
+    const {aemail,apassword} = req.body;
+    // check if admin exist or not 
+    const findAdmin = await admin.findOne({aemail});
+
+    if(!findAdmin) res.json({status:404})
+
+    if(findAdmin?.isBlocked === true) res.json({status:409,message:"Account Blocked"})
+    
+    if(findAdmin && await findAdmin.isPasswordMatched(apassword)){
+        const refreshToken = await generateToken(findAdmin?._id)
+        const updateadmin = await admin.findByIdAndUpdate(findAdmin?.id,{
+            refreshToken:refreshToken
+        },{new:true})
+
+        res.cookie('refreshToken',refreshToken,{
+            httpOnly:true,
+            maxAge:72*1
+        })
+
+        res.json({
+            _id:findAdmin?._id,
+            aname:findAdmin?.aname,
+            aemail:findAdmin?.aemail,
+            aphone:findAdmin?.aphone,
+        })
+    }else{
+        res.json({status:404,message:"Invalid Credentials"})
+    }
+})
+

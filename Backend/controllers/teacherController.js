@@ -1,5 +1,7 @@
 import teacher from '../models/teacher.js';
+import generateToken from '../utils/jwtToken.js';
 import asyncHandler from 'express-async-handler';
+
 
 // Teacher Creation
 export const createTeacher = asyncHandler(async (request,response) => {
@@ -13,6 +15,40 @@ export const createTeacher = asyncHandler(async (request,response) => {
        response.status(404).json({message:"Teacher already exists"});
     }
 });
+
+// Teacher Login
+
+export const loginTeacher = asyncHandler(async (req,res)=>{
+    const {temail,tpassword} = req.body;
+    // check if teacher exist or not 
+    const findTeacher = await teacher.findOne({temail});
+
+    if(!findTeacher) res.json({status:404})
+
+    if(findTeacher?.isBlocked === true) res.json({status:409,message:"Account Blocked"})
+    
+    if(findTeacher && await findTeacher.isPasswordMatched(tpassword)){
+        const refreshToken = await generateToken(findTeacher?._id)
+        const updateteacher = await teacher.findByIdAndUpdate(findTeacher?.id,{
+            refreshToken:refreshToken
+        },{new:true})
+
+        res.cookie('refreshToken',refreshToken,{
+            httpOnly:true,
+            maxAge:72*1
+        })
+
+        res.json({
+            _id:findTeacher?._id,
+            tname:findTeacher?.tname,
+            temail:findTeacher?.temail,
+            tphone:findTeacher?.tphone,
+        })
+    }else{
+        res.json({status:404,message:"Invalid Credentials"})
+    }
+})
+
 
 // teacher get all teachers
 export const getallTeachers = asyncHandler(async (req,res)=>{
