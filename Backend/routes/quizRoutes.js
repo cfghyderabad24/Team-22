@@ -1,7 +1,7 @@
 import express from 'express';
-import question from '../models/question.js';
-import userAttempt from '../models/userAttempt.js';
+import { getQuestions, userQuestions } from '../controllers/quizController.js';
 
 const router = express.Router();
 
-router.get('/question')
+router.route('/question').get(getQuestions);
+router.route('/submitquiz').post(userQuestions);
