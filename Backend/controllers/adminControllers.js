@@ -24,3 +24,6 @@ export const getallStudents = asyncHandler(async (req,res)=>{
      res.json({error:error,status:404}) 
     }
 })
+
+
+
