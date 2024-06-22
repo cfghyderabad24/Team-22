@@ -26,7 +26,6 @@ export const getallAdmins = asyncHandler(async (req,res)=>{
 })
 
 
-
 // admin get a admin
 
 export const getaAdmin = asyncHandler(async(req,res)=>{
