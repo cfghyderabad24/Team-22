@@ -12,6 +12,6 @@ export const createStudent = asyncHandler( async (req,res)=>{
     else{
        res.json({status:404})
     }
-})
+});
 
 // sadadsf

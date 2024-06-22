@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import studentRouter from './routes/studentRoutes.js'
 import passport from 'passport';
-import initializePassport from '../services/passport.js';
+import initializePassport from './services/passport.js';
 
 dotenv.config();
 
