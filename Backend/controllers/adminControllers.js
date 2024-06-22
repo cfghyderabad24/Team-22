@@ -2,6 +2,7 @@ import admin from '../models/admin.js';
 import contact from '../models/contactTeacher.js';
 import asyncHandler from 'express-async-handler';
 import generateToken from '../utils/jwtToken.js';
+
 // Admin Creation
 export const createAdmin = asyncHandler(async (request,response) => {
     const {aid} = request.body
