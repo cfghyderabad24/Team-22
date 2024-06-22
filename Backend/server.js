@@ -11,6 +11,7 @@ import passport from 'passport';
 import initializePassport from './services/passport.js';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
+import contact from './models/contactTeacher.js';
 
 dotenv.config();
 
@@ -44,10 +45,10 @@ app.use(passport.initialize());
 initializePassport(passport);
 
 // Contact Us 
-app.post('/api/contact', async (request, response) => {
+app.post('/api/teacher/contact', async (request, response) => {
     const { name, email,  message } = request.body;
 
-    const newMessage = new ContactMessage({ name, email, message });
+    const newMessage = new contact({ name, email, message });
     await newMessage.save();
     
     let transporter = nodemailer.createTransport({
@@ -67,15 +68,10 @@ app.post('/api/contact', async (request, response) => {
 
     try {
         await transporter.sendMail(mailOptions);
-        res.status(200).send('Email sent successfully');
+        response.status(200).send('Email sent successfully');
     } catch (error) {
         console.error('Error sending email:', error);
-        res.status(500).send('Error sending email');
+        response.status(500).send('Error sending email');
     }
-});
-
-// Get Contact Details
-app.get('/admin/contact', async (request, response) => {
-
 });
 
