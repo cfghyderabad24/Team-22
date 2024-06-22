@@ -3,6 +3,8 @@ import './Navbar.css'
 import { Link } from 'react-scroll';
 import menu_icon from '../../assests/images/menu_icon.png'
 import logos from '../../assests/images/logos.jpeg'
+import { NavLink, Routes ,Route } from 'react-router-dom';
+import Login from '../Sign-in-Sign-out/Login';
 
 const Navbar = () => {
     const [menu, setMenu] = useState(false)
@@ -19,17 +21,23 @@ const Navbar = () => {
     };
 
     return (
+        <>
         <nav className={`container ${sticky ? 'dark-nav' : ''}`}>
             <img src={logos} alt="" className="logo" />
             <ul className={menu ? '' : 'hide-menu'}>
                 <li><Link to='home' smooth={true} offset={0} duration={500}>Home</Link></li>
                 <li><Link to='show' smooth={true} offset={-260} duration={500}>Library</Link></li>
-                <li>Login</li>
                 <li><Link to='about' smooth={true} offset={-200} duration={500}>About Us</Link></li>
                 <li><Link to='contact' smooth={true} offset={-260} duration={500} className='btn'>Contact Us</Link></li>
+                <li><NavLink to="login">Login</NavLink></li>
             </ul>
             <img src={menu_icon} alt='' className='menu-icon' onClick={toggleMenu} />
         </nav>
+
+        <Routes>
+           <Route path="login" element={<Login/>} />
+        </Routes>
+        </>
     )
 }
 

@@ -1,0 +1,66 @@
+/* StudentRegister.css */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  form div {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    text-align: left;
+  }
+  
+  input.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .ant-picker,
+  .ant-select {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .ant-select-selector {
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+  }
+  
+  

@@ -2,7 +2,7 @@ import {Fragment, useState} from 'react'
 import { Dialog, Transition } from "@headlessui/react";
 
 
-const CheckIn = () =>{
+const CheckOut = () =>{
     
     const [studentName , setStudentName ] = useState("")
     const [bookName , setBookName] = useState("")
@@ -106,4 +106,4 @@ const CheckIn = () =>{
 }
 
 
-export default CheckIn
+export default CheckOut

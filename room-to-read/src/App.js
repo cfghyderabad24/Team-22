@@ -9,6 +9,12 @@ import About from './components/About/About';
 import OurTeam from './components/OurTeam/OurTeam';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import StudentProfile from './components/Student/student';
+import CheckOut from './components/Checkout/checkout';
+import CheckIn from './components/CheckIn/checkin';
+import StudentRegister from './components/Sign-in-Sign-out/StudentRegister';
+import Login from './components/Sign-in-Sign-out/Login';
+import Sign_in from './components/Sign-in-Sign-out/Sign_in';
 // import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 
@@ -33,9 +39,12 @@ function App() {
               </div>
             </>
           } />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Sign_in />} />
-          <Route path="studentregister" element={<StudentRegister />} />
+          <Route path="login" element={<Login/>}/>
+          <Route path="sign_in" element={<Sign_in/>}/>
+          <Route path="studentregister" element={<StudentRegister/>} />
+          <Route path="student" element={<StudentProfile/>}/>
+          <Route path="checkin" element={<CheckIn/>}/>
+          <Route path="checkout" element={<CheckOut/>}/>
         </Routes>
       </BrowserRouter>
     </>
