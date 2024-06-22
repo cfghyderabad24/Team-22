@@ -29,3 +29,4 @@ dbConnect()
 .catch(e=>console.log("DB Connection Lost"))
 
 app.use(passport.initialize());
+initializePassport(passport);
