@@ -11,7 +11,7 @@ router.route('/blockteacher').put(authMiddleWareAdmin,triggerblockteacher)
 router.route('/getallteachers').get(authMiddleWareTeacher,getallTeachers)
 router.route('/getateacher').get(authMiddleWareTeacher,getaTeacher)
 router.route('/updateteacher').put(authMiddleWareTeacher,updateTeacher)
-router.route('/loginTeacher').get(loginTeacher)
+router.route('/loginTeacher').post(loginTeacher)
 
 
 
