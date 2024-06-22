@@ -12,7 +12,8 @@ export const createStudent = asyncHandler( async (req,res)=>{
     else{
        res.json({status:404})
     }
-})
+});
+
 
 export const getallStudents = asyncHandler(async (req,res)=>{
     try {
