@@ -1,8 +1,7 @@
-import admin from '../models/admin.js';
-import contact from '../models/contactTeacher.js';
 import asyncHandler from 'express-async-handler';
+import book from '../models/book.js';
 
-// Admin Creation
+// Book Creation
 export const createBook = asyncHandler(async (request,response) => {
     const {bid} = request.body
     const findBook = await book.findOne({bid})
@@ -15,7 +14,7 @@ export const createBook = asyncHandler(async (request,response) => {
     }
 });
 
-// admin get all admins
+// get all books
 export const getallBooks = asyncHandler(async (req,res)=>{
     try {
         const getBooks = await book.find()
@@ -24,5 +23,40 @@ export const getallBooks = asyncHandler(async (req,res)=>{
      res.json({error:error,status:404}) 
     }
 })
+
+// get a book
+export const getaBook = asyncHandler(async(req,res)=>{
+    try {
+        const {id} = req.body;
+        const getBook =await book.findById(id)
+        res.json({getBook:getBook,status:201})
+    } catch (error) {
+        res.json({error:error,status:404})
+    }
+})
+
+// update a book
+
+export const updateBook = asyncHandler(async(req,res)=>{
+    try {
+        const {id} = req.body
+        const updatebook = await book.findByIdAndUpdate(id,{
+            book_title:req?.body?.book_title,
+            noc:req?.body?.noc,
+            level:req?.body?.level,
+            genre:req.body?.genre,
+            bok_lan:req.body?.bok_lan,
+            author:req.body?.author,
+            publication_name:req.body?.publication_name
+        },{new:true})
+
+        res.json({status:201,updatebook:updatebook})
+
+    } catch (error) {
+        res.json({status:500,error:error})
+    }
+})
+
+
 
 
