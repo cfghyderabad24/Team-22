@@ -5,8 +5,8 @@ const router = Router()
 
 router.route('/registerstudent').post(createStudent)
 router.route('/deletestudent').delete(deleteStudent)
-router.route('/getallstudents').put(getallStudents)
-router.route('/getastudent').put(getaStudent)
+router.route('/getallstudents').get(getallStudents)
+router.route('/getastudent').get(getaStudent)
 
 
 export default router
