@@ -13,6 +13,8 @@ import initializePassport from './services/passport.js';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
 import contact from './models/contactTeacher.js';
+import quizRouter from './routes/quizRoutes.js';
+import checkinRoute from './routes/checkinRoutes.js';
 
 dotenv.config();
 
@@ -29,9 +31,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 
 app.use('/api/user',studentRouter)
+app.use('/api/quiz',quizRouter)
 app.use('/api/admin',adminRouter)
 app.use('/api/teacher',teacherRouter)
 app.use('/api/book',bookRouter)
+app.use('/api/teacher',checkinRoute)
 
 dbConnect() 
 .then(()=>{
@@ -76,4 +80,15 @@ app.post('/api/teacher/contact', async (request, response) => {
         response.status(500).send('Error sending email');
     }
 });
+
+
+// Student Data to Download in CSV Format
+app.get('/api/admin/getallstudents', (req, res) => {
+    const fields = ['id', 'name', 'age', 'level', 'schoolName'];
+    const json2csvParser = new Parser({ fields });
+    const csv = json2csvParser.parse(students);
+    res.header('Content-Type', 'text/csv');
+    res.attachment('students.csv');
+    res.send(csv);
+  });
 
