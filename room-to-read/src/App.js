@@ -1,14 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-// import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
-// import Programs from './components/Programs/Programs'
-// import Title from './components/Title/Title';
-// import About from './components/About/About';
-// import OurTeam from './components/OurTeam/OurTeam';
-// import Contact from './components/Contact/Contact';
-// import Footer from './components/Footer/Footer';
 import Layout from './components/Layout';
 import TeacherLogin from './components/pages/TeacherLogin';
 import GetStudentList from './components/pages/getStudentList';
@@ -16,7 +9,6 @@ import Studentregistration from './components/pages/studentRegistration';
 import LibraryDashboard from './components/pages/libraryDashboard';
 import PublicRoutes from './components/pages/publicRoutes';
 import PrivateRoutes from './components/pages/privateRoutes';
-// import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 
 function App() {
@@ -32,7 +24,7 @@ function App() {
           <Route path='/studentregistration' index element={<PrivateRoutes><Studentregistration/></PrivateRoutes>}/>
           <Route path='/librarydashboard' index element={<PrivateRoutes><LibraryDashboard/></PrivateRoutes>}/>
           </Route>
-          {/* <Route path="register" element={<Sign_in />} /> */}
+          
         </Routes>
       </BrowserRouter>
     </>

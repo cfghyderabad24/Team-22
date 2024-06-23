@@ -6,9 +6,8 @@ const Home = () => {
     const dispatch = useDispatch();
   const navigate = useNavigate();
   const { teacherData } = useSelector((state) => state.teacher);
-  console.log(teacherData);
   useEffect(() => {
-    if (teacherData) {
+    if (teacherData && teacherData?.status === 201) {
       navigate('/home');
       window.location.reload();
     }

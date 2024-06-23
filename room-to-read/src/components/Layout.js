@@ -8,7 +8,9 @@ import NavBar from './Navbar/Navbar';
 import Home from '../components/Home/Home';
 import Contact from '../components/Contact/Contact';
 import Footer from '../components/Footer/Footer';
-
+import Programs from './Programs/Programs';
+import Tests from './OurTeam/OurTeam';
+import Title from './Title/Title';
 const Layout = () => {
   return (
     <>
@@ -33,8 +35,16 @@ const Layout = () => {
             <Outlet/>
         </div>
       </div>
-      {/* <Contact /> */}
-    {/* <Footer /> */}
+
+      <div className='container'>
+                <Title title='Our Programs' subtitle="Our Work is in alignment to the NIPUN Bharat Mission by the Ministry of Education (MOE)" />
+                <Programs />
+                <Title title='Our Team' subtitle="Meet our global leaders who have deep expertise in International Education, Business and Finance" />
+                <Tests/>
+                <Title title='Contact Us' subtitle="Let's connect" />
+                <Contact />
+                <Footer />
+              </div>
     </>
   )
 }
