@@ -6,7 +6,7 @@ const checkinStudent = asyncHandler (async (req, res) => {
     try {
         const checkinData = new Checkin(req.body);
         await checkinData.save();
-        res.status(201).send({ message: 'Student checked in successfully', data: checkinData });
+        res.status(201).json({ message: 'Student checked in successfully', data: checkinData,status:201 });
     } catch (error) {
         res.status(400).send({ message: 'Error checking in student', error });
     }
@@ -22,7 +22,7 @@ const checkoutStudent = async (req, res) => {
             return res.status(404).send({ message: 'Check-in record not found' });
         }
 
-        res.status(201).send({ message: 'Student checked out successfully', data: checkinData });
+        res.status(201).json({ message: 'Student checked out successfully', data: checkinData, status:201 });
     } catch (error) {
         res.status(400).send({ message: 'Error checking out student', error });
     }
