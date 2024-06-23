@@ -14,6 +14,7 @@ import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
 import contact from './models/contactTeacher.js';
 import quizRouter from './routes/quizRoutes.js';
+import checkinRoute from './routes/checkinRoutes.js';
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use('/api/quiz',quizRouter)
 app.use('/api/admin',adminRouter)
 app.use('/api/teacher',teacherRouter)
 app.use('/api/book',bookRouter)
+app.use('/api/teacher',checkinRoute)
 
 dbConnect() 
 .then(()=>{
