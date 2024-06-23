@@ -79,6 +79,7 @@ const LibraryDashboard = () => {
       <div className="row">
         <div className="col-12">
           <Table columns={columns} dataSource={librarydashboardData} rowKey="uid" />
+          <button className='btn btn-success'>Download Excel Data</button>
         </div>
       </div>
     </div>

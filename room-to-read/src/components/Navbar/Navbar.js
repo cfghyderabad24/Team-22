@@ -64,6 +64,18 @@ function NavBar() {
                 StudentList
               </NavLink>
             </li>
+
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/checkinout"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                CheckIn/Out
+              </NavLink>
+            </li>
             <li className="nav-item">
               <NavLink
                 exact

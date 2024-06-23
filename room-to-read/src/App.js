@@ -9,6 +9,7 @@ import Studentregistration from './components/pages/studentRegistration';
 import LibraryDashboard from './components/pages/libraryDashboard';
 import PublicRoutes from './components/pages/publicRoutes';
 import PrivateRoutes from './components/pages/privateRoutes';
+import CheckInOut from './components/pages/checkIn-Out';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/login' index element={<PublicRoutes><TeacherLogin/></PublicRoutes>}/>
           <Route path='/studentlist' index element={<PrivateRoutes> <GetStudentList/> </PrivateRoutes>}/>
           <Route path='/studentregistration' index element={<PrivateRoutes><Studentregistration/></PrivateRoutes>}/>
+          <Route path='/checkinout' element={<PrivateRoutes><CheckInOut/></PrivateRoutes>}/>
           <Route path='/librarydashboard' index element={<PrivateRoutes><LibraryDashboard/></PrivateRoutes>}/>
           </Route>
           
