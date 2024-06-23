@@ -7,16 +7,8 @@ const initialState = {
     isError:false,
     isSuccess:false,
     isLoading:false,
+    teacherData:''
 }
-
-
-// export const studentRegistration = createAsyncThunk('auth/register', async (registerData, thunkAPI) => {
-//     try {
-//         return await teacherServices.registerStudent(registerData);
-//     } catch (error) {
-//         return thunkAPI.rejectWithValue(error.response.data); 
-//     }
-// }); 
 
 
 export const loginTeacher = createAsyncThunk('teacher/login', async (loginData, thunkAPI) => {
@@ -44,18 +36,18 @@ const teacherSlice = createSlice({
             state.isError = false
             state.isSuccess = true
             state.isLoading = false
-            state.LoginData = action.payload
+            state.teacherData = action.payload
             if(action.payload?.status === 201)
             {
-                toast.success("Login Sucess")
+                toast.success("Login Sucess Access Navbar")
                 cookies.set('teacherData',action.payload,{
                     expires:new Date(Date.now()+ 600000)
                 })
                 localStorage.setItem('Time LoggedIn',Date(Date.now()))
             }
-            else if(action.payload?.status === 404)
+            else if(action.payload?.status !== 201)
             {
-                toast.error("Password Not Matched")
+                toast.error("Detais Enter Invalid")
             }
         })
         .addCase(loginTeacher.rejected,(state,action)=>{

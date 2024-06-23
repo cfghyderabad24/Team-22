@@ -14,6 +14,8 @@ import TeacherLogin from './components/pages/TeacherLogin';
 import GetStudentList from './components/pages/getStudentList';
 import Studentregistration from './components/pages/studentRegistration';
 import LibraryDashboard from './components/pages/libraryDashboard';
+import PublicRoutes from './components/pages/publicRoutes';
+import PrivateRoutes from './components/pages/privateRoutes';
 // import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 
@@ -24,11 +26,11 @@ function App() {
         <Routes>
           <Route path={'/'} element={<Layout/>}>
           <Route path='/home' element={<Home/>}/>
-          <Route path='/' index element={<TeacherLogin/>}/>
-          <Route path='/login' index element={<TeacherLogin/>}/>
-          <Route path='/studentlist' index element={<GetStudentList/>}/>
-          <Route path='/studentregistration' index element={<Studentregistration/>}/>
-          <Route path='/librarydashboard' index element={<LibraryDashboard/>}/>
+          <Route path='/' index element={<PublicRoutes><TeacherLogin/></PublicRoutes>}/>
+          <Route path='/login' index element={<PublicRoutes><TeacherLogin/></PublicRoutes>}/>
+          <Route path='/studentlist' index element={<PrivateRoutes> <GetStudentList/> </PrivateRoutes>}/>
+          <Route path='/studentregistration' index element={<PrivateRoutes><Studentregistration/></PrivateRoutes>}/>
+          <Route path='/librarydashboard' index element={<PrivateRoutes><LibraryDashboard/></PrivateRoutes>}/>
           </Route>
           {/* <Route path="register" element={<Sign_in />} /> */}
         </Routes>

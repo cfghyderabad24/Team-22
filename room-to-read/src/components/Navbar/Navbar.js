@@ -10,9 +10,10 @@ function NavBar() {
   const handleLogOut = ()=>{
     handleClick()
     localStorage.clear()
-    cookies.remove('adminData')
+    cookies.remove('teacherData')
     window.location.reload()
   }
+
 
 
   const handleClick = () => setClick(!click);
@@ -74,7 +75,7 @@ function NavBar() {
                 Library Dashboard
               </NavLink>
             </li>
-           {cookies.get('adminData') ? <li className="nav-item">
+           {cookies.get('teacherData') ? <li className="nav-item">
               <NavLink
                 exact
                 to="/"

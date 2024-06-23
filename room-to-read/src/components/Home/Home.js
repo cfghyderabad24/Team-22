@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Home.css'
-const Hero = () => {
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+const Home = () => {
+    const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { teacherData } = useSelector((state) => state.teacher);
+  console.log(teacherData);
+  useEffect(() => {
+    if (teacherData) {
+      navigate('/home');
+      window.location.reload();
+    }
+  }, [teacherData]);
+
+    
     return (
         <div className='hero container'>
             <div className='hero-text'>
@@ -12,4 +26,4 @@ const Hero = () => {
     )
 }
 
-export default Hero
+export default Home
