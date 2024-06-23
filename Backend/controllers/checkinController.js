@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import Checkin from './models.js';
+import Checkin from '../models/checkin.js';
 
 // Check-in a student
 const checkinStudent = asyncHandler (async (req, res) => {
@@ -22,7 +22,7 @@ const checkoutStudent = async (req, res) => {
             return res.status(404).send({ message: 'Check-in record not found' });
         }
 
-        res.status(200).send({ message: 'Student checked out successfully', data: checkinData });
+        res.status(201).send({ message: 'Student checked out successfully', data: checkinData });
     } catch (error) {
         res.status(400).send({ message: 'Error checking out student', error });
     }
@@ -33,7 +33,7 @@ const checkoutStudent = async (req, res) => {
 const getCheckins = async (req, res) => {
     try {
         const checkins = await Checkin.find();
-        res.status(200).send({ data: checkins });
+        res.status(201).send({ data: checkins });
     } catch (error) {
         res.status(400).send({ message: 'Error fetching check-ins', error });
     }
