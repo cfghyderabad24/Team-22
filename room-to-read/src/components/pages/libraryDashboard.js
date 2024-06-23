@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Table } from 'antd';
 import studentstatic from './staticStudentList';
 import librarydashboardData from './staticLibraryDashboard';
+import * as XLSX from 'xlsx';
+
 
 const columns = [
   {
@@ -74,12 +76,21 @@ const LibraryDashboard = () => {
     }
   }, [sessionsData]);
 
+
+  const handleExcelSheet = ()=>{
+    window.location.reload()
+    const worksheet = XLSX.utils.json_to_sheet(studentstatic);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    XLSX.writeFile(workbook, 'table_data.xlsx');
+  }
+
   return (
     <div className="container-xxl">
       <div className="row">
         <div className="col-12">
           <Table columns={columns} dataSource={librarydashboardData} rowKey="uid" />
-          <button className='btn btn-success'>Download Excel Data</button>
+          <button className='btn btn-success' onClick={handleExcelSheet}>Download Excel Data</button>
         </div>
       </div>
     </div>
