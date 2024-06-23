@@ -15,8 +15,8 @@ const checkinStudent = asyncHandler (async (req, res) => {
 // Check-out a student
 const checkoutStudent = async (req, res) => {
     try {
-        const { student_id } = req.body;
-        const checkinData = await Checkin.findOneAndDelete({ student_id });
+        const { student_id, book_id } = req.body;
+        const checkinData = await Checkin.findOneAndDelete({ student_id, book_id });
 
         if (!checkinData) {
             return res.status(404).send({ message: 'Check-in record not found' });
@@ -27,6 +27,7 @@ const checkoutStudent = async (req, res) => {
         res.status(400).send({ message: 'Error checking out student', error });
     }
 };
+
 
 // Get all check-ins
 const getCheckins = async (req, res) => {
