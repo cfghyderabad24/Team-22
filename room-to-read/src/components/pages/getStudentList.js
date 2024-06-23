@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Table } from 'antd';
+import { Button, Checkbox, Table } from 'antd';
 import studentstatic from './staticStudentList';
+
+const handleSingleUser = (e)=>{
+
+}
 
 const columns = [
   {
@@ -29,6 +33,13 @@ const columns = [
     dataIndex: 'uSchool',
     key: 'uSchool',
   },
+  {
+    title: 'Single Student Access',
+    dataIndex: 'ssa',
+    render: (text, record) => (
+      <Button type="primary" onClick={(e)=>handleSingleUser(record)}> SSA Button</Button>
+    ),
+  }
 ];
 
 const GetStudentList = () => {
